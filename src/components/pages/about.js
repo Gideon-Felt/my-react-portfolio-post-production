@@ -1,35 +1,165 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
+import ResumeModal from "../modals/resume-pdf-modal"
 
 import profilePicture from "../../../static/assets/images/bio/headshot.jpg"
 
+import pythonIcon from "../../../static/assets/images/bio/skills/python.png"
+import reactIcon from "../../../static/assets/images/bio/skills/react.png"
+import jsIcon from "../../../static/assets/images/bio/skills/js.png"
+import mongoIcon from "../../../static/assets/images/bio/skills/mongo.png"
+import mySqlIcon from "../../../static/assets/images/bio/skills/mysql.png"
+import scssIcon from "../../../static/assets/images/bio/skills/scss.png"
+import htmlIcon from "../../../static/assets/images/bio/skills/html.png"
+import cssIcon from "../../../static/assets/images/bio/skills/css.png"
+import sqLiteIcon from "../../../static/assets/images/bio/skills/sqlite.png"
+import redisIcon from "../../../static/assets/images/bio/skills/redis.png"
+
+
 export default function() {
+    const [ bioTextPanelStyles, setBioTextPanelStyles ] = useState({width: "45vw", marginRight: "0", display: "visible", heigh: "10vh"})
+    const [ contactMePanelStyles, setContactMePanelStyles ] = useState({width: "0", marginRight: "-45vw", display: "none", heigh: "10vh"})
+    const [ resumePanelStyles, setResumePanelStyles ] = useState({width: "0", marginRight: "-90vw", display: "none", heigh: "10vh"})
+    const [ resumeModalIsOpen, setResumeModalIsOpen ] = useState(false)
+    const [ lastTab, setLastTab ] = useState("text")
+
+
+    function openAboutText() {
+        setBioTextPanelStyles({width: "45vw", marginRight: "0", display: "flex", heigh: "10vh"})
+        setContactMePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setResumePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setLastTab("text")
+    }
+
+    function openContact() {
+        setBioTextPanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setContactMePanelStyles({width: "45vw", marginRight: "-45vw", display: "flex", heigh: "10vh"})
+        setResumePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setLastTab("contact")
+      }
+    
+    
+    function openResume() {
+        setBioTextPanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setContactMePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
+        setResumePanelStyles({width: "45vw", marginRight: "-90vw", display: "flex", heigh: "10vh"})
+        setResumeModalIsOpen(true)
+    }
+    
+    function handleModalClose() {
+        setResumeModalIsOpen(false)
+        if (lastTab === "text") {
+            openAboutText()
+        } else if (lastTab === "contact") {
+            openContact()
+        } 
+    }
+
+
     return (
-        <div className="content-page-wrapper">
-            <div
-            className="left-column"
-            style={{
-               background: `url(${profilePicture}) no-repeat`,
-               backgroundSize: "cover",
-               backgroundPosition: "center"
-            }}
-            >
-                
+        <div className="outer-wrapper">
+            <div className="content-page-wrapper">
+                <div className="bio-image-wrapper">
+                    <img className="bio-image" src={profilePicture} alt="bio-img"/>                
+                </div>
+                <div className="about-right-column">
+                    <div className="content-card">
+                        <div className="tab-control-spacer">
+                            <div className="tab-control-wrapper">
+                                <span className="about-tab" onClick={() => openAboutText()}>About Me</span>
+                                <span className="about-tab" onClick={() => openContact()}>Contact Me</span>
+                                <span className="about-tab" onClick={() => openResume()}>My Resume</span>
+                            </div>
+                        
+                        </div>
+                            <div>
+                                <div className="bio-text-wrapper" style={bioTextPanelStyles}>
+                                    I’m a success driven, problem solver. My motivation derives from doing work that has large and long-lasting impact. I have high integrity and work ethic. I’m tenacious and detail oriented. Continual personal growth is something I value in myself and others. I believe in the contagious nature of positivity. I believe in flexibility where needed and standing up for what I know is right when necessary. Strong teamwork, open and honest communication, and the criticality of time management and task prioritization are all skills I have and believe are important to my success and the success of those around me.
+                                </div >
+                                
+                                <div className="contact-me-wrapper" style={contactMePanelStyles}>
+                                    {/* Contact page  */}
+                                    <div className="bullet-point-group">
+                                        <div className="icon">
+                                                <FontAwesomeIcon icon="phone" />
+                                        </div>
+                                        <div className="text">
+                                            208-313-8757
+                                        </div>
+                                    </div>
+
+                                    <div className="bullet-point-group">
+                                        <div className="icon">
+                                                <FontAwesomeIcon icon="envelope" />
+                                        </div>
+                                        <div className="text">
+                                            gideonfelt.dev@gmail.com
+                                        </div>
+                                    </div>
+
+                                    <div className="bullet-point-group">
+                                        <div className="icon">
+                                                <FontAwesomeIcon icon="map-marked-alt" />
+                                        </div>
+                                        <div className="text">
+                                            Lehi, UT
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <div className="view-resume-wrapper" style={resumePanelStyles}>
+                                <div className="resume-modal-wrapper">
+                                    <ResumeModal handleModalClose={handleModalClose} resumeModalIsOpen={resumeModalIsOpen}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="right-column">
-                My resume / list of skills
 
-
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam eum quod qui, ratione repudiandae, fuga cum vitae ex aut, optio animi eius itaque quisquam? Praesentium maxime temporibus quis voluptas officiis!
-Minima, laudantium. Magnam odit, fugit architecto laboriosam quas reprehenderit nihil cupiditate nesciunt beatae unde. Quos, a aliquam praesentium alias incidunt laboriosam, itaque architecto rem earum nihil atque quisquam esse reprehenderit?
-Iure deleniti minima fugiat corrupti non eius placeat officiis eos iste, cum consectetur, ea porro explicabo deserunt quo sapiente odit sunt voluptates ullam necessitatibus. Quaerat repellendus nesciunt suscipit similique nostrum.
-Amet, adipisci dolorem. Vitae unde fugiat sed pariatur labore, laborum veritatis debitis ullam accusantium beatae, quaerat distinctio voluptates accusamus iure ex quas soluta alias rerum quo. Consequatur iure quo hic.
-Quos modi fuga minima porro quasi ipsam? Magnam nostrum hic blanditiis quam fugiat maxime et rerum consequuntur. Facere illum repellat numquam? Ex, placeat dicta! Ipsam molestias laudantium veritatis vitae inventore.
-Earum minima incidunt perspiciatis minus iusto quia voluptate, eveniet aut error autem eos esse corporis consequuntur mollitia. Aliquam, enim temporibus deleniti accusamus, necessitatibus non et sunt fugiat, libero consequuntur magnam.
-Quia repudiandae eius aliquam nemo necessitatibus atque deserunt unde explicabo nobis nesciunt, sit minima tempore, quos architecto quidem in illo eligendi quae sint nam quas! Et provident neque reiciendis animi!
-Officiis, quis quisquam! Tempore eaque molestias deserunt numquam laudantium rerum amet animi ad, a cupiditate reprehenderit ut beatae earum fugiat nesciunt fugit vero voluptatum tenetur nihil. Repudiandae iure iste magnam.
-Tenetur illum provident autem harum rem quis labore vel atque, molestiae repellat ex expedita quae quam facere, omnis et dolor iste magnam itaque dolore est minus aspernatur. Quaerat, reiciendis nulla.
-Quo id aut, ratione porro alias esse tempora consectetur cum repellat nemo, ipsum culpa dicta. Eligendi suscipit temporibus ea eum iusto. Qui incidunt, blanditiis ex exercitationem ipsa placeat ipsam obcaecati?
-Rerum deserunt quisquam amet ab, dolorem suscipit architecto reiciendis, saepe nihil excepturi voluptas quo voluptate iure dolore, ut provident? Est architecto doloribus aliquam a libero suscipit voluptas velit saepe repudiandae.
+            <div className="skill-icon-wrapper">
+                <div className="skill-icon">
+                    <img className="icon" src={pythonIcon} alt="python-icon"/>
+                    <p>Python</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={reactIcon} alt="react-icon"/>
+                    <p>React</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={jsIcon} alt="js-icon"/>
+                    <p>JavaScript</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={mongoIcon} alt="mongo-icon"/>
+                    <p>MongoDB</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={mySqlIcon} alt="mysql-icon"/> 
+                    <p>MySQL</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={scssIcon} alt="scss-icon"/> 
+                    <p>SCSS</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={htmlIcon} alt="html-icon"/> 
+                    <p>HTML5</p>
+                </div> 
+                <div className="skill-icon">
+                    <img className="icon" src={cssIcon} alt="css-icon"/>
+                    <p>CSS3</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={sqLiteIcon} alt="sqlite-icon"/>
+                    <p>SQLite</p>
+                </div>
+                <div className="skill-icon">
+                    <img className="icon" src={redisIcon} alt="redis-icon"/>
+                    <p>Redis</p>
+                </div>
+                
             </div>
         </div>
     )

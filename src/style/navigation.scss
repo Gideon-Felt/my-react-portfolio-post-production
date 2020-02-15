@@ -24,7 +24,7 @@
 
     .nav-link-wrapper {
         height: 22px;
-        border-bottom: 1px solid transparent;
+        border-bottom: 2px solid transparent;
         transition: 0.5 ease-in-out;
 
         margin-right: 20px;
@@ -32,7 +32,7 @@
         font-size: 0.9rem;
 
         .nav-link-active {
-            border-bottom: 1px solid black;
+            border-bottom: 2px solid $teal;
             padding: 4px
         }
 
@@ -46,7 +46,7 @@
         }
 
         &:hover {
-            border-bottom: 1px solid black;
+            border-bottom: 2px solid $teal;
         }
 
     }

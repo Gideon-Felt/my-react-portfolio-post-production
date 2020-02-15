@@ -1,0 +1,125 @@
+.outer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .content-page-wrapper {
+        display: flex;
+        height: 70vh;
+        .bio-image-wrapper {
+            width: 50vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .bio-image {
+                margin-top: -7vh;
+                margin-bottom: 0vh;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                width: auto;
+                max-width: 40vw;
+                height: auto;
+                max-height: 65vh;
+            }
+        }
+    
+        .about-right-column {
+            width: 50vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10vh;
+            align-items: center;
+            .content-card {
+                margin-left: -10vw;
+                width: 45vw;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                .tab-control-spacer {
+                    display: flex;
+                    height: 10vh;
+                    width: 100%;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    div {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-around;
+                    }
+        
+                    .tab-control-wrapper {
+                        height: 22px;
+                        border-bottom: 3px solid transparent;
+                        transition: 0.5 ease-in-out;
+        
+                        margin-right: 20px;
+                        text-transform: uppercase;
+                        font-size: 0.9rem;
+        
+                        .about-tab {
+                            padding: -4px;
+                            color: $grey;
+                            text-decoration: none;
+                            border-bottom: 3px solid transparent;
+                            &:hover {
+                                color: black;
+                                border-bottom: 3px solid $teal;
+                            }
+                        }
+                    }
+                    
+                }
+                .bio-text-wrapper {
+                    padding-left: 5px;
+                    font-size: 19px;
+                    font-family: sans-serif;
+                    display: flex;
+                    flex-direction: column;
+                    
+    
+                }
+                .contact-me-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    .bullet-point-group {
+                        display: flex;
+                        .icon {
+                            margin-left: 10%;
+                            color: $teal;
+                            font-size: 30px
+                        }
+                        .text {
+                            margin-left: 8px;
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        }
+    .skill-icon-wrapper {
+        margin-top: -25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        height: 16vh;
+        .skill-icon {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            .icon {
+                height: 16vh;
+                width: auto;
+            }
+            
+            p {
+                text-align: center;
+                margin-top:0.3vh;
+                font-family: 'Major Mono Display', monospace;
+            }
+            
+        }
+
+    }
+}

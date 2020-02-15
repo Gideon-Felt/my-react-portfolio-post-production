@@ -39,7 +39,8 @@ export default class BlogModal extends Component {
             onRequestClose={() => {
                 this.props.handleModalClose()
             }}  isOpen={this.props.isOpen}>
-                <BlogForm handleSuccessfullFormSubmission={this.handleSuccessfullFormSubmission}/>
+                <span className="modal-close-button" onClick={() => this.props.handleModalClose()}>Close</span>
+                <BlogForm handleSuccessfullFormSubmission={this.handleSuccessfullFormSubmission} handleModalClose={this.props.handleModalClose}/>
             </ReactModal>
         )
     }
