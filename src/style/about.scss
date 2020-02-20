@@ -1,113 +1,85 @@
 .outer-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+    display: grid;
+    grid-auto-rows: 2;
+    margin-top: 5vh;
+    
+    // grid-gap: 20px;
+    // height: 100%;
 
     .content-page-wrapper {
-        display: flex;
+        display: grid;
+        grid-auto-columns: 50vw 50vw;
         height: 70vh;
+        
+
         .bio-image-wrapper {
-            width: 50vw;
+            grid-column-end: 1;
             display: flex;
-            align-items: center;
             justify-content: center;
+            width: 100%; 
+            height: auto;
             .bio-image {
-                margin-top: -7vh;
-                margin-bottom: 0vh;
+                // margin-top: -7vh;
+                margin-top: 0;
+                margin-bottom: 0;
+                margin-right: 0;
+                
+                padding-right: 0;
                 box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                width: auto;
-                max-width: 40vw;
+                width: 45vw;
+                max-height: 70vh;
+                
                 height: auto;
-                max-height: 65vh;
             }
         }
     
         .about-right-column {
+            
             width: 50vw;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            margin-top: 10vh;
-            align-items: center;
+            margin-left: 5px;
+            padding-left: 5px;
             .content-card {
-                margin-left: -10vw;
-                width: 45vw;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                // margin-top: -5vh;
+                // margin-left: -8vw;
+                width: 100%;
+                    
                 .tab-control-spacer {
-                    display: flex;
-                    height: 10vh;
-                    width: 100%;
-                    flex-direction: column;
-                    justify-content: flex-end;
-                    div {
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: space-around;
-                    }
-        
+                    width: 45vw;
                     .tab-control-wrapper {
-                        height: 22px;
-                        border-bottom: 3px solid transparent;
-                        transition: 0.5 ease-in-out;
-        
-                        margin-right: 20px;
-                        text-transform: uppercase;
-                        font-size: 0.9rem;
-        
+                        font-size: 1rem;
+                        display: flex;
+                        justify-content: space-between;
                         .about-tab {
-                            padding: -4px;
-                            color: $grey;
-                            text-decoration: none;
-                            border-bottom: 3px solid transparent;
-                            &:hover {
-                                color: black;
-                                border-bottom: 3px solid $teal;
-                            }
+                            margin: 0px;
+                        }
+                        .center {
+                            margin-right: 5px;
+                            margin-left: 5px;
                         }
                     }
-                    
                 }
-                .bio-text-wrapper {
-                    padding-left: 5px;
-                    font-size: 19px;
-                    font-family: sans-serif;
-                    display: flex;
-                    flex-direction: column;
-                    
-    
-                }
-                .contact-me-wrapper {
-                    display: flex;
-                    flex-direction: column;
-                    .bullet-point-group {
-                        display: flex;
-                        .icon {
-                            margin-left: 10%;
-                            color: $teal;
-                            font-size: 30px
-                        }
-                        .text {
-                            margin-left: 8px;
-                            font-size: 30px;
+                .lower-card-wrapper {
+                    width: 100%;
+                    margin: 0;
+                    .bio-text-wrapper {
+                        width: 90%;
+                        font-size: 1rem;
+                        text-align: left;
+                        margin: 0;
+                        .text-content {
+                            width: 100%;
+                            margin: 0;
                         }
                     }
                 }
             }
-            
-        }
-        
-        }
+        }      
+    }
+    
     .skill-icon-wrapper {
-        margin-top: -25px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
-        height: 16vh;
-        .skill-icon {
-            display: flex;
-            flex-direction: column;
-            justify-items: center;
+        .skill-icon {                  
             .icon {
                 height: 16vh;
                 width: auto;
@@ -121,5 +93,46 @@
             
         }
 
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .outer-wrapper {
+        .content-page-wrapper {
+            // grid-auto-rows: 1;
+            grid-column-start: 1;
+            width: 100vw;
+            height: auto;
+            
+            .bio-image-wrapper {
+                // position: fixed;
+                width: 100vw;
+                height: auto;
+                grid-column-start: -1;
+            }
+            .about-right-column {
+                margin-top: 30px;
+                // grid-column-start: 1;
+                width: 100%;
+                margin-left: 33vw;
+                .content-card {
+                    width: 33vw;
+                }
+                .lower-card-wrapper {
+                    width: 33vw;
+                    .bio-text-wrapper {
+                        font-size: 10px;
+                        text-align: center;
+                        .text-content {
+                            width: 33vw;
+                        }
+                    }
+                }
+            }
+            
+        }
+        // .skill-icon-wrapper {
+        //     
+        // }
     }
 }

@@ -18,15 +18,15 @@ import redisIcon from "../../../static/assets/images/bio/skills/redis.png"
 
 
 export default function() {
-    const [ bioTextPanelStyles, setBioTextPanelStyles ] = useState({width: "45vw", marginRight: "0", display: "visible", heigh: "10vh"})
-    const [ contactMePanelStyles, setContactMePanelStyles ] = useState({width: "0", marginRight: "-45vw", display: "none", heigh: "10vh"})
-    const [ resumePanelStyles, setResumePanelStyles ] = useState({width: "0", marginRight: "-90vw", display: "none", heigh: "10vh"})
+    const [ bioTextPanelStyles, setBioTextPanelStyles ] = useState({width: "90%", marginRight: "0", display: "visible", heigh: "10vh"})
+    const [ contactMePanelStyles, setContactMePanelStyles ] = useState({width: "0", marginRight: "-90%", display: "none", heigh: "10vh"})
+    const [ resumePanelStyles, setResumePanelStyles ] = useState({width: "0", marginRight: "-90%", display: "none", heigh: "10vh"})
     const [ resumeModalIsOpen, setResumeModalIsOpen ] = useState(false)
     const [ lastTab, setLastTab ] = useState("text")
 
 
     function openAboutText() {
-        setBioTextPanelStyles({width: "45vw", marginRight: "0", display: "flex", heigh: "10vh"})
+        setBioTextPanelStyles({width: "90%", marginRight: "0", display: "flex", heigh: "10vh"})
         setContactMePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
         setResumePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
         setLastTab("text")
@@ -34,7 +34,7 @@ export default function() {
 
     function openContact() {
         setBioTextPanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
-        setContactMePanelStyles({width: "45vw", marginRight: "-45vw", display: "flex", heigh: "10vh"})
+        setContactMePanelStyles({width: "90%", marginRight: "-90%", display: "flex", heigh: "10vh"})
         setResumePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
         setLastTab("contact")
       }
@@ -43,7 +43,7 @@ export default function() {
     function openResume() {
         setBioTextPanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
         setContactMePanelStyles({width: "0", marginRight: "0", display: "none", heigh: "10vh"})
-        setResumePanelStyles({width: "45vw", marginRight: "-90vw", display: "flex", heigh: "10vh"})
+        setResumePanelStyles({width: "90%", marginRight: "-90%", display: "flex", heigh: "10vh"})
         setResumeModalIsOpen(true)
     }
     
@@ -57,7 +57,7 @@ export default function() {
     }
 
 
-    return (
+    return ( // TODO add flex wrap to both left and right columns so right slides under left.
         <div className="outer-wrapper">
             <div className="content-page-wrapper">
                 <div className="bio-image-wrapper">
@@ -65,48 +65,48 @@ export default function() {
                 </div>
                 <div className="about-right-column">
                     <div className="content-card">
+
                         <div className="tab-control-spacer">
                             <div className="tab-control-wrapper">
                                 <span className="about-tab" onClick={() => openAboutText()}>About Me</span>
-                                <span className="about-tab" onClick={() => openContact()}>Contact Me</span>
+                                <span className="about-tab center" onClick={() => openContact()}>Contact Me</span>
                                 <span className="about-tab" onClick={() => openResume()}>My Resume</span>
                             </div>
                         
                         </div>
-                            <div>
-                                <div className="bio-text-wrapper" style={bioTextPanelStyles}>
-                                    I’m a success driven, problem solver. My motivation derives from doing work that has large and long-lasting impact. I have high integrity and work ethic. I’m tenacious and detail oriented. Continual personal growth is something I value in myself and others. I believe in the contagious nature of positivity. I believe in flexibility where needed and standing up for what I know is right when necessary. Strong teamwork, open and honest communication, and the criticality of time management and task prioritization are all skills I have and believe are important to my success and the success of those around me.
-                                </div >
-                                
-                                <div className="contact-me-wrapper" style={contactMePanelStyles}>
-                                    {/* Contact page  */}
-                                    <div className="bullet-point-group">
-                                        <div className="icon">
-                                                <FontAwesomeIcon icon="phone" />
-                                        </div>
-                                        <div className="text">
-                                            208-313-8757
-                                        </div>
+                        
+                        <div className="lower-card-wrapper">
+                            <div className="bio-text-wrapper" style={bioTextPanelStyles}>
+                                <span className="text-content">I’m a success driven, problem solver. My motivation derives from doing work that has large and long-lasting impact. I have high integrity and work ethic. I’m tenacious and detail oriented. Continual personal growth is something I value in myself and others. I believe in the contagious nature of positivity. I believe in flexibility where needed and standing up for what I know is right when necessary. Strong teamwork, open and honest communication, and the criticality of time management and task prioritization are all skills I have and believe are important to my success and the success of those around me.</span>
+                            </div >
+                            
+                            <div className="contact-me-wrapper" style={contactMePanelStyles}>
+                                {/* Contact page  */}
+                                <div className="bullet-point-group">
+                                    <div className="icon">
+                                            <FontAwesomeIcon icon="phone" />
                                     </div>
-
-                                    <div className="bullet-point-group">
-                                        <div className="icon">
-                                                <FontAwesomeIcon icon="envelope" />
-                                        </div>
-                                        <div className="text">
-                                            gideonfelt.dev@gmail.com
-                                        </div>
-                                    </div>
-
-                                    <div className="bullet-point-group">
-                                        <div className="icon">
-                                                <FontAwesomeIcon icon="map-marked-alt" />
-                                        </div>
-                                        <div className="text">
-                                            Lehi, UT
-                                        </div>
+                                    <div className="text">
+                                        208-313-8757
                                     </div>
                                 </div>
+                                <div className="bullet-point-group">
+                                    <div className="icon">
+                                            <FontAwesomeIcon icon="envelope" />
+                                    </div>
+                                    <div className="text">
+                                        gideonfelt.dev@gmail.com
+                                    </div>
+                                </div>
+                                <div className="bullet-point-group">
+                                    <div className="icon">
+                                            <FontAwesomeIcon icon="map-marked-alt" />
+                                    </div>
+                                    <div className="text">
+                                        Lehi, UT
+                                    </div>
+                                </div>
+                            </div>
 
                             <div className="view-resume-wrapper" style={resumePanelStyles}>
                                 <div className="resume-modal-wrapper">
@@ -159,7 +159,6 @@ export default function() {
                     <img className="icon" src={redisIcon} alt="redis-icon"/>
                     <p>Redis</p>
                 </div>
-                
             </div>
         </div>
     )
