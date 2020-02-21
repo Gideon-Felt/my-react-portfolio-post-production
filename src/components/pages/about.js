@@ -77,7 +77,11 @@ export default function() {
                         
                         <div className="lower-card-wrapper">
                             <div className="bio-text-wrapper" style={bioTextPanelStyles}>
-                                <span className="text-content">I’m a success driven, problem solver. My motivation derives from doing work that has large and long-lasting impact. I have high integrity and work ethic. I’m tenacious and detail oriented. Continual personal growth is something I value in myself and others. I believe in the contagious nature of positivity. I believe in flexibility where needed and standing up for what I know is right when necessary. Strong teamwork, open and honest communication, and the criticality of time management and task prioritization are all skills I have and believe are important to my success and the success of those around me.</span>
+                                <span className="text-content">I’m a success-driven problem solver. My motivation derives from doing work that has a broad, long-lasting impact. I am known for my integrity and work ethic.
+                                    I’m tenacious and detail oriented. Continual growth is something I value highly in myself and others. I believe in the contagious nature of positivity. I
+                                    believe in flexibility where needed and standing up for what I know is right. Strong teamwork, open and honest communication, and the criticality of
+                                    time management and task prioritization are all skills I have and believe are important to my success and the success of those around me.
+                                </span>
                             </div >
                             
                             <div className="contact-me-wrapper" style={contactMePanelStyles}>
